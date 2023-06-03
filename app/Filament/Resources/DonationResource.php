@@ -29,6 +29,7 @@ class DonationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationLabel = 'Tambah Donasi';
 
     public static function form(Form $form): Form
     {
@@ -50,7 +51,7 @@ class DonationResource extends Resource
                         RichEditor::make('description')
                             ->required()
                             ->maxLength(65535),
-                        SpatieMediaLibraryFileUpload::make('image')
+                        FileUpload::make('image')
                             ->required(),
                         Forms\Components\TextInput::make('stock')
                             ->numeric()
@@ -69,7 +70,7 @@ class DonationResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')->label(__('fields.name')),
                 Tables\Columns\TextColumn::make('stock'),
                 Tables\Columns\TextColumn::make('status'),
                 ImageColumn::make('image'),

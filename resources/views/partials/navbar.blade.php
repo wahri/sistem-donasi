@@ -5,7 +5,7 @@
             <span>
                 {{-- Kind Heart Charity
                 <small>Non-profit Organization</small> --}}
-                Donasi
+                Berbagi Makan
             </span>
         </a>
 
@@ -21,15 +21,15 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#section_3">Donation</a>
+                    <a class="nav-link" href="#section_3">Donasi</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#section_4">Volunteer</a>
+                    <a class="nav-link" href="#section_4">Relawan</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#section_6">Contact</a>
+                    <a class="nav-link" href="#section_6">Kontak</a>
                 </li>
 
                 @guest

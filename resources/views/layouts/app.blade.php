@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ $title ?? 'Donasi' }}</title>
+    <title>{{ $title ?? 'Berbagi Makan' }}</title>
 
     <!-- CSS FILES -->
     <link href=<?= asset("css/bootstrap.min.css") ?> rel="stylesheet">

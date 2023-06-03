@@ -44,7 +44,7 @@
             <div class="row">
 
                 <div class="col-lg-10 col-12 text-center mx-auto">
-                    <h2 class="mb-5">Welcome to Kind Heart Charity</h2>
+                    <h2 class="mb-5">Selamat Datang</h2>
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-4">
@@ -53,7 +53,7 @@
                             <img src="images/icons/food-donation.png" class="featured-block-image img-fluid" alt=""
                                 style="height: 100px">
 
-                            <p class="featured-block-text">Find <strong>Help</strong></p>
+                            <p class="featured-block-text">Cari <strong>Donasi</strong></p>
                         </a>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                             <img src="images/icons/receive.png" class="featured-block-image img-fluid" alt=""
                                 style="height: 100px">
 
-                            <p class="featured-block-text">Make a <strong>Donation</strong></p>
+                            <p class="featured-block-text">Donasi <strong>Makanan</strong></p>
                         </a>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                             <img src="images/icons/hands.png" class="featured-block-image img-fluid" alt=""
                                 style="height: 100px">
 
-                            <p class="featured-block-text">Become a <strong>volunteer</strong></p>
+                            <p class="featured-block-text">Jadi <strong>Relawan</strong></p>
                         </a>
                     </div>
                 </div>
@@ -88,9 +88,9 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-12 col-12 text-center mb-4">
+                {{-- <div class="col-lg-12 col-12 text-center mb-4">
                     <h2>Donation</h2>
-                </div>
+                </div> --}}
 
                 <div class="col-lg-3 col-md-6 col-12 mb-4">
                     <div class="custom-block-wrap">
@@ -103,13 +103,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         18,500
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -125,13 +125,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         27,600
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -147,12 +147,12 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         84,600
                                     </p>
                                 </div>
                             </div>
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -168,13 +168,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         18,500
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -190,13 +190,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         18,500
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -212,13 +212,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         27,600
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -234,12 +234,12 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         84,600
                                     </p>
                                 </div>
                             </div>
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -255,13 +255,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         18,500
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -277,13 +277,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         18,500
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -299,13 +299,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         27,600
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -321,12 +321,12 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         84,600
                                     </p>
                                 </div>
                             </div>
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -342,13 +342,13 @@
 
                                 <div class="d-flex align-items-center my-2">
                                     <p class="mb-0">
-                                        <strong>Stock:</strong>
+                                        <strong>Stok:</strong>
                                         18,500
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="" class="custom-btn btn">Request</a>
+                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -418,4 +418,6 @@
             </div>
         </div>
     </section>
+
+    <!-- sponsor section -->
 @endsection

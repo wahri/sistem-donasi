@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Donation::class);
     }
+
+    public function profile()
+    {
+        return $this->morphTo();
+    }
 }

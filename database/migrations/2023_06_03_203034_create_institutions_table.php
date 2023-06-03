@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('institution_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique();
-            $table->string('name');
-            $table->text('description');
-            $table->text('image');
-            $table->decimal('selling_price', 10, 2);
-            $table->integer('stock');
-            $table->softDeletes();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('company');
+            $table->string('phone');
             $table->timestamps();
+            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('institution_profiles');
     }
 };

@@ -13,7 +13,7 @@
                     <div class="row">
 
                         <div class="col-lg-12 col-12 text-center">
-                            <h5 class="mt-1">Daftar untuk memberi donasi</h5>
+                            <h5 class="mt-1">Daftar untuk mendapatkan donasi</h5>
                         </div>
 
                         <div class="col-lg-12 col-12 mt-3">
