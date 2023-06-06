@@ -16,9 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('slug')->unique();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('image');
             $table->integer('stock');
+            $table->string('unit');
             $table->integer('status');
             $table->dateTime('expired_donation');
             $table->softDeletes();

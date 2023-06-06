@@ -1653,3 +1653,18 @@ blockquote::before {
   }
 }
 
+    
+    #sponsor-section h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    #sponsor-carousel {
+        margin: 0 auto;
+    }
+
+    .sponsor-image{
+      /* height: 150px; */
+      width: 100px;
+      object-fit: cover;
+    }

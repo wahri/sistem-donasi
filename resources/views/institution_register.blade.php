@@ -20,6 +20,9 @@
                             <input type="text" name="company" id="company" class="form-control"
                                 placeholder="Nama Perusahaan/Restoran/Warung/" required>
                         </div>
+                        <div class="col-lg-12 col-12 mt-3">
+                                <textarea class="form-control" name="address" id="address" rows="2" placeholder="Alamat Perusahaan/Restoran/Warung" required></textarea>
+                        </div>
 
                         <div class="col-lg-6 col-12 mt-3">
                             <input type="text" name="name" id="name" class="form-control"

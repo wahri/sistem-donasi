@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $contributorProfile = ContributorProfile::create([
             'user_id' => $user2->id,
             'company' => 'Kota Buana',
+            'address' => 'Jl. Sudirman',
             'phone' => '0812 7572 6466',
         ]);
         $user2->profile()->associate($contributorProfile);
@@ -51,6 +52,7 @@ class DatabaseSeeder extends Seeder
         $institutionProfile = InstitutionProfile::create([
             'user_id' => $user3->id,
             'company' => 'Panti Asuhan',
+            'address' => 'Jl. Arifin Ahmad',
             'phone' => '0812 1234 1234',
         ]);
         $user3->profile()->associate($institutionProfile);

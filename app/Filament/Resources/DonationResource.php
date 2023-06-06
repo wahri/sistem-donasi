@@ -9,6 +9,7 @@ use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Resources\Form;
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
 
 class DonationResource extends Resource
@@ -29,7 +31,7 @@ class DonationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationLabel = 'Tambah Donasi';
+    protected static ?string $navigationLabel = 'Berikan Donasi';
 
     public static function form(Form $form): Form
     {
@@ -47,20 +49,29 @@ class DonationResource extends Resource
                                 $set('slug', Str::slug($state));
                             })
                             ->required()
-                            ->maxLength(255),
-                        RichEditor::make('description')
-                            ->required()
-                            ->maxLength(65535),
-                        FileUpload::make('image')
-                            ->required(),
-                        Forms\Components\TextInput::make('stock')
-                            ->numeric()
-                            ->minValue(1)
-                            ->required(),
+                            ->maxLength(255)
+                            ->label(__('Nama Makanan'))
+                            ->placeholder('Ex: Nasi Kotak, Pisang, Sayuran, dsb.'),
                         Forms\Components\DateTimePicker::make('expired_donation')
-                            ->required(),
+                            ->required()->label(__('Perkiraan Tanggal Kadaluarsa')),
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('stock')
+                                    ->numeric()
+                                    ->minValue(1)
+                                    ->required()->label(__('Jumlah Porsi'))->columns(2),
+                                TextInput::make('unit')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->label(__('Tipe Porsi'))
+                                    ->placeholder('Ex: Kotak, Kilogram, Porsi, dsb.'),
+                            ]),
                         Hidden::make('status')
                             ->required(),
+                        RichEditor::make('description')
+                            ->maxLength(65535)->label(__('Keterangan Tambahan')),
+                        FileUpload::make('image')
+                            ->required()->label(__('Tambahkan Gambar')),
                     ])
             ]);
     }
@@ -70,7 +81,7 @@ class DonationResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('name')->label(__('fields.name')),
+                Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('stock'),
                 Tables\Columns\TextColumn::make('status'),
                 ImageColumn::make('image'),

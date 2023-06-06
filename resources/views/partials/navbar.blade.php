@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light shadow-lg">
     <div class="container">
         <a class="navbar-brand" href="{{ route('homepage') }}">
-            <img src="images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">
+            <img src="{{ asset('images/logo.png') }}" class="logo img-fluid">
             <span>
                 {{-- Kind Heart Charity
                 <small>Non-profit Organization</small> --}}
@@ -21,7 +21,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#section_3">Donasi</a>
+                    <a class="nav-link" href="{{ route('donasiPage') }}">Donasi</a>
                 </li>
 
                 <li class="nav-item">
@@ -44,15 +44,16 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="user-profile">
+
                             <li><a class="dropdown-item" href="/admin">Dashboard</a></li>
 
                             <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item" href="{{ route('filament.auth.logout') }}"
                                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                <form id="logout-form" action="{{ route('filament.auth.logout') }}" method="POST">
                                     @csrf
                                 </form>
                             </li>

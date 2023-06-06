@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\FrontPageController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\RegistrationController;
+use App\Models\Donation;
+use App\Models\RequestDonation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,16 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-})->name('homepage');
+Route::get('/', [FrontPageController::class, 'index'])->name('homepage');
+
+Route::get('/donasi/{id}', [FrontPageController::class, 'detailDonasi'])->name('detailDonasi');
+Route::get('/donasi', [FrontPageController::class, 'donasiPage'])->name('donasiPage');
+
+Route::post('/requestDonation', [DonationController::class, 'requestDonation'])->name('requestDonation');
 
 
-Route::controller(LoginRegisterController::class)->group(function() {  
-    Route::get('/login', 'login')->name('login');
+Route::controller(LoginRegisterController::class)->group(function () {
+    Route::get('/login', 'login')->name('filament.auth.login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::post('/logout', 'logout')->name('logout');
-    
+    Route::post('/auth/logout', 'logout')->name('filament.auth.logout');
+
     Route::get('/institution-register')->name('institution_register');
     Route::post('/institution-register')->name('institution_register_process');
 

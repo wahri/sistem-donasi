@@ -11,11 +11,14 @@
     <title>{{ $title ?? 'Berbagi Makan' }}</title>
 
     <!-- CSS FILES -->
-    <link href=<?= asset("css/bootstrap.min.css") ?> rel="stylesheet">
+    {{-- <link href=<?= asset('css/bootstrap.min.css') ?> rel="stylesheet"> --}}
 
-    <link href=<?= asset("css/bootstrap-icons.css") ?> rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <link href=<?= asset("css/templatemo-kind-heart-charity.css") ?> rel="stylesheet">
+    <link href=<?= asset('css/bootstrap-icons.css') ?> rel="stylesheet">
+
+    <link href=<?= asset('css/templatemo-kind-heart-charity.css') ?> rel="stylesheet">
     <!--
 
 TemplateMo 581 Kind Heart Charity
@@ -29,10 +32,10 @@ https://templatemo.com/tm-581-kind-heart-charity
 <body id="section_1">
 
     @include('partials.header')
-    
+
     @include('partials.navbar')
 
-    
+
 
     <main>
 
@@ -49,6 +52,10 @@ https://templatemo.com/tm-581-kind-heart-charity
     <script src="js/click-scroll.js"></script>
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        var myCarousel = document.querySelector('#sponsor-carousel')
+        var carousel = new bootstrap.Carousel(myCarousel)
+    </script>
 
 </body>
 

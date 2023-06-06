@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('institution_profiles', function (Blueprint $table) {
+        Schema::create('request_donations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('company');
-            $table->string('address');
-            $table->string('phone');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('donation_id')->constrained('donations');
+            $table->text('comment')->nullable();
+            $table->integer('quantity');
+            $table->integer('status')->nullable();
             $table->timestamps();
-            
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('institution_profiles');
+        Schema::dropIfExists('request_donations');
     }
 };

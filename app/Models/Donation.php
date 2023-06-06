@@ -12,7 +12,7 @@ class Donation extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;
-    protected $fillable = ['user_id', 'slug', 'name', 'image', 'description', 'stock', 'status', 'expired_donation'];
+    protected $fillable = ['user_id', 'slug', 'name', 'image', 'description', 'stock', 'unit', 'status', 'expired_donation'];
 
     public function user()
     {

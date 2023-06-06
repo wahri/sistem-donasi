@@ -92,266 +92,37 @@
                     <h2>Donation</h2>
                 </div> --}}
 
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/pisang.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
 
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Children Education</h5>
+                @forelse ($donations as $donation)
+                    <div class="col-lg-3 col-md-6 col-12 mb-4">
+                        <div class="custom-block-wrap">
+                            <img src="{{ asset('storage/' . $donation->image) }}" class="custom-block-image img-fluid"
+                                alt="" style="height: 150px; object-fit: cover">
 
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        18,500
-                                    </p>
+                            <div class="custom-block">
+                                <div class="custom-block-body">
+                                    <h5 class="mb-1">{{ $donation->name }}</h5>
+
+                                    <div class="d-flex align-items-center my-1">
+                                        <p class="mb-0">
+                                            <strong>Stok:</strong>
+                                            {{ $donation->stock . ' ' . $donation->unit }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
+                                <a href="{{ route('detailDonasi', $donation->id) }}" class="custom-btn btn">Dapatkan
+                                    Donasi</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/apel.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
+                @empty
 
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Poverty Development</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        27,600
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
+                    <div class="col-lg-12 col-12 text-center mb-4">
+                        <h2>Belum Ada Donasi</h2>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/kasur.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Supply drinking water</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        84,600
-                                    </p>
-                                </div>
-                            </div>
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/nasi_kotak.png" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Children Education</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        18,500
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/pisang.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Children Education</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        18,500
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/apel.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Poverty Development</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        27,600
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/kursi.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Supply drinking water</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        84,600
-                                    </p>
-                                </div>
-                            </div>
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/kasur.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Children Education</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        18,500
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/pisang.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Children Education</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        18,500
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/apel.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Poverty Development</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        27,600
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/kasur.jpg" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Supply drinking water</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        84,600
-                                    </p>
-                                </div>
-                            </div>
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="images/causes/nasi_kotak.png" class="custom-block-image img-fluid" alt=""
-                            style="height: 150px; object-fit: cover">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Children Education</h5>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <p class="mb-0">
-                                        <strong>Stok:</strong>
-                                        18,500
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a href="" class="custom-btn btn">Dapatkan Donasi</a>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
 
 
             </div>
@@ -375,14 +146,13 @@
                             </div>
 
                             <div class="col-lg-6 col-12">
-                                <input type="email" name="volunteer-email" id="volunteer-email"
-                                    pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Jackdoe@gmail.com"
-                                    required>
+                                <input type="email" name="volunteer-email" id="volunteer-email" pattern="[^ @]*@[^ @]*"
+                                    class="form-control" placeholder="Jackdoe@gmail.com" required>
                             </div>
 
                             <div class="col-lg-6 col-12">
-                                <input type="text" name="volunteer-subject" id="volunteer-subject"
-                                    class="form-control" placeholder="Subject" required>
+                                <input type="text" name="volunteer-subject" id="volunteer-subject" class="form-control"
+                                    placeholder="Subject" required>
                             </div>
 
                             <div class="col-lg-6 col-12">
@@ -418,6 +188,89 @@
             </div>
         </div>
     </section>
+
+    <section id="sponsor-section" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12 text-center mb-4">
+                    <h2>Sponsor</h2>
+                </div>
+
+                <div id="sponsor-carousel" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor1.png') }}"
+                                        alt="Sponsor 1">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor2.png') }}"
+                                        alt="Sponsor 2">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor3.png') }}"
+                                        alt="Sponsor 3">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor1.png') }}"
+                                        alt="Sponsor 1">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor2.png') }}"
+                                        alt="Sponsor 2">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor3.png') }}"
+                                        alt="Sponsor 3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor1.png') }}"
+                                        alt="Sponsor 1">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor2.png') }}"
+                                        alt="Sponsor 2">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor3.png') }}"
+                                        alt="Sponsor 3">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor1.png') }}"
+                                        alt="Sponsor 1">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor2.png') }}"
+                                        alt="Sponsor 2">
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor3.png') }}"
+                                        alt="Sponsor 3">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more carousel items as needed -->
+                    </div>
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#sponsor-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#sponsor-carousel" data-slide-to="1"></li>
+                        <!-- Add more indicators as needed -->
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
 
     <!-- sponsor section -->
 @endsection
