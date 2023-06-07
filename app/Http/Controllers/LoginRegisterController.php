@@ -104,14 +104,13 @@ class LoginRegisterController extends Controller
             $role = Role::find(Auth::user()->roles->pluck('id')[0]);
 
             // Mengatur redirect page sesuai role
-            if ($role->name == 'Institution') {
-                return redirect()->route('homepage')
-                    ->withSuccess('You have successfully logged in!');
-            } else {
+            if ($role->name == 'Admin') {
                 return redirect()->to('admin')
                     ->withSuccess('You have successfully logged in!');
+            } else {
+                return redirect()->route('homepage')
+                    ->withSuccess('You have successfully logged in!');
             }
-
         }
 
         return back()->withErrors([

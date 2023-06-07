@@ -38,6 +38,54 @@
                     </li>
                 @else
                     <li class="nav-item dropdown">
+                        <a class="nav-link" href="" id="user-notification" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="social-icon-item bi-bell-fill"></i>
+                            @if ($isNewNotifications)
+                                <span
+                                    class="position-absolute translate-middle p-1 bg-danger border border-light rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                </span>
+                            @endif
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-light" aria-labelledby="user-notification">
+
+                            @if (count($notifications) > 0)
+                                @foreach ($notifications as $notification)
+                                    <li>
+                                        <a class="dropdown-item {{ $notification->isNew ? 'new-notif' : '' }}"
+                                            href="{{ route('readNotification', $notification->id) }}">
+                                            @if ($notification->isNew)
+                                            <span
+                                                class="position-absolute translate-middle p-1 bg-danger border border-light rounded-circle">
+                                                <span class="visually-hidden">New alerts</span>
+                                            </span>
+
+                                            @endif
+                                            <img class=""
+                                                src="{{ asset('storage/' . $notification->donation->image) }}"
+                                                alt="" style="height: 30px; width: 30px; object-fit: cover">
+                                            <span class="ml-2">
+                                                {{ $notification->message }}
+                                            </span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <span class="ml-2">
+                                            Tidak ada pesan baru
+                                        </span>
+                                    </a>
+                                </li>
+                            @endif
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle custom-btn custom-border-btn btn" href=""
                             id="user-profile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}

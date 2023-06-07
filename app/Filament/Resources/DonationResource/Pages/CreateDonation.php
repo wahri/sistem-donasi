@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\DonationResource\Pages;
 
 use App\Filament\Resources\DonationResource;
+use App\Models\Donation;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;

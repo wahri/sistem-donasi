@@ -9,5 +9,5 @@ use Spatie\Permission\Traits\HasRoles;
 class ContributorProfile extends Model
 {
     use HasFactory, HasRoles;
-    protected $fillable = ['company', 'phone'];
+    protected $fillable = ['company', 'phone', 'address'];
 }

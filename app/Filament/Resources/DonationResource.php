@@ -124,6 +124,7 @@ class DonationResource extends Resource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+            ])
+            ->whereBelongsTo(auth()->user());;
     }
 }
