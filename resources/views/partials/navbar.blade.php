@@ -57,11 +57,10 @@
                                         <a class="dropdown-item {{ $notification->isNew ? 'new-notif' : '' }}"
                                             href="{{ route('readNotification', $notification->id) }}">
                                             @if ($notification->isNew)
-                                            <span
-                                                class="position-absolute translate-middle p-1 bg-danger border border-light rounded-circle">
-                                                <span class="visually-hidden">New alerts</span>
-                                            </span>
-
+                                                <span
+                                                    class="position-absolute translate-middle p-1 bg-danger border border-light rounded-circle">
+                                                    <span class="visually-hidden">New alerts</span>
+                                                </span>
                                             @endif
                                             <img class=""
                                                 src="{{ asset('storage/' . $notification->donation->image) }}"
@@ -92,9 +91,10 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="user-profile">
-
-                            <li><a class="dropdown-item" href="/admin">Dashboard</a></li>
-
+                            <li><a class="dropdown-item" href="{{ route('settingAccount') }}">Pengaturan Akun</a></li>
+                            @role('Contributor')
+                                <li><a class="dropdown-item" href="/admin">Dashboard</a></li>
+                            @endrole
                             <li>
                                 <a class="dropdown-item" href="{{ route('filament.auth.logout') }}"
                                     onclick="event.preventDefault();

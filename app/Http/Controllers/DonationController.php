@@ -46,14 +46,23 @@ class DonationController extends Controller
 
     public function requestConfirmation(RequestDonation $request)
     {
-        $request->update(['status' => 1]);
+        $qty = $request->quantity;
+        $donation = Donation::findOrFail($request->donation_id);
 
+        if ($qty > $donation->stock) {
+            return back()->with(['error' => 'Permintaan melebihi jumlah stock!']);
+        }
+
+        $donation->update([
+            'stock' => $donation->stock - $qty
+        ]);
+
+        $request->update(['status' => 1]);
         Notification::create([
             'user_id'     => $request->user_id,
             'donation_id'     => $request->donation_id,
             'message' => 'Permintaan Telah Disetujui',
         ]);
-
 
         return redirect()->route('detailDonasi', $request->donation_id);
     }

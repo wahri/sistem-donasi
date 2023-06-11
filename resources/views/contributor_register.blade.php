@@ -36,8 +36,8 @@
                             </div>
 
                             <div class="col-lg-6 col-12 mt-3">
-                                <input type="email" name="email" id="donation-email" pattern="[^ @]*@[^ @]*"
-                                    class="form-control" placeholder="Email" required>
+                                <input type="username" name="username" id="username" pattern="[^ @]*@[^ @]*"
+                                    class="form-control" placeholder="Username untuk login akun" required>
                             </div>
 
                             <div class="col-lg-6 col-12 mt-3">

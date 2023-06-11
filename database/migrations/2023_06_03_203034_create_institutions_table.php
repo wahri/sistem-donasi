@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('company');
             $table->string('address');
             $table->string('phone');
+            $table->string('document')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

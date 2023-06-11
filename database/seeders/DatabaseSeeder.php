@@ -23,14 +23,14 @@ class DatabaseSeeder extends Seeder
 
         $user1 = User::factory()->create([
             'name' => 'Administrator',
-            'email' => 'admin@example.com',
+            'username' => 'admin',
         ]);
         $role1 = Role::create(['name' => 'Admin']);
         $user1->assignRole($role1);
 
         $user2 = User::factory()->create([
             'name' => 'Contributor',
-            'email' => 'contributor@example.com',
+            'username' => 'contributor',
         ]);
         $role2 = Role::create(['name' => 'Contributor']);
         $user2->assignRole($role2);
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
 
         $user3 = User::factory()->create([
             'name' => 'Institution',
-            'email' => 'institution@example.com',
+            'username' => 'institution',
         ]);
         $role3 = Role::create(['name' => 'Institution']);
         $user3->assignRole($role3);

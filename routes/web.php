@@ -29,13 +29,21 @@ Route::post('/requestConfirmation/{request}', [DonationController::class, 'reque
 Route::post('/requestDonation', [DonationController::class, 'requestDonation'])->name('requestDonation');
 
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('pengaturan-akun', [FrontPageController::class, 'settingAccount'])->name('settingAccount');
+    
+    Route::post('updateProfile', [FrontPageController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('changePassword', [FrontPageController::class, 'changePassword'])->name('changePassword');
+  });
+
+
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/login', 'login')->name('filament.auth.login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::post('/auth/logout', 'logout')->name('filament.auth.logout');
 
-    Route::get('/institution-register')->name('institution_register');
-    Route::post('/institution-register')->name('institution_register_process');
+    Route::get('/institution-register', 'createInstitution')->name('institution_register');
+    Route::post('/institution-register', 'storeInstitution')->name('institution_register_process');
 
     Route::get('/contributor-register', 'createContributor')->name('contributor_register');
     Route::post('/contributor-register', 'storeContributor')->name('contributor_register_process');

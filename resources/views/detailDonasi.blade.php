@@ -62,64 +62,67 @@
                                 </div>
                             </div>
                         @else
-                            @if ($checkRoleUser)
-                                @if (!$checkRequest)
-                                    <form action="{{ route('requestDonation') }}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="donation_id" value="{{ $donation->id }}">
-                                        <div class="row border-top pt-3">
-                                            <div class="col-8">
-                                                <label for="quantity" class="col-form-label">
-                                                    <p>
-                                                        <strong>
-                                                            Jumlah permintaan:
-                                                        </strong>
-                                                    </p>
-                                                </label>
-                                            </div>
+                            @if ($donation->stock > 0)
+                                @role('Institution')
+                                    @if (!$checkRequest)
+                                        <form action="{{ route('requestDonation') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="donation_id" value="{{ $donation->id }}">
+                                            <div class="row border-top pt-3">
+                                                <div class="col-8">
+                                                    <label for="quantity" class="col-form-label">
+                                                        <p>
+                                                            <strong>
+                                                                Jumlah permintaan:
+                                                            </strong>
+                                                        </p>
+                                                    </label>
+                                                </div>
 
-                                            <div class="col-4">
-                                                <div class="input-group input-group-sm">
-                                                    <input class="quantity form-control" type="number" id="quantity"
-                                                        name="quantity" min="1" max="{{ $donation->stock }}" required>
-                                                    <span class="input-group-text custom-btn">{{ $donation->unit }}</span>
+                                                <div class="col-4">
+                                                    <div class="input-group input-group-sm">
+                                                        <input class="quantity form-control" type="number" id="quantity"
+                                                            name="quantity" min="1" max="{{ $donation->stock }}" required>
+                                                        <span class="input-group-text custom-btn">{{ $donation->unit }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row mb-3">
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <textarea name="comment" id="comment" rows="2" class="form-control" placeholder="Tuliskan pesan jika ada"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <button type="submit" class="btn btn-sm custom-btn">
+                                                        Dapatkan Donasi
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </form>
+                                    @elseif ($getRequest->status == 0)
+                                        <div class="row border-top pt-3">
                                             <div class="col-12">
-                                                <textarea name="comment" id="comment" rows="2" class="form-control" placeholder="Tuliskan pesan jika ada"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-auto">
-                                                <button type="submit" class="btn btn-sm custom-btn">
-                                                    Dapatkan Donasi
+                                                <button class="btn btn-sm custom-btn" disabled>
+                                                    Menunggu persetujuan
                                                 </button>
-
                                             </div>
                                         </div>
-                                    </form>
-                                @elseif ($checkRequestStatus = 0)
-                                    <div class="row border-top pt-3">
-                                        <div class="col-12">
-                                            <button class="btn btn-sm custom-btn" disabled>
-                                                Menunggu persetujuan
-                                            </button>
+                                    @elseif ($getRequest->status == 1)
+                                        <div class="row border-top pt-3">
+                                            <div class="col-12">
+                                                <a href="https://api.whatsapp.com/send?phone={{ $donation->user->profile->phone }}&text=Hai%20saya%20dari%20{{ $loginUser->profile->company }}%20ingin%20konfirmasi%20permintaan%20donasi"
+                                                    class="btn btn-success">
+                                                    <i class="social-icon-item bi-whatsapp"></i>
+                                                    Permintaan disetujui, silahkan konfirmasi
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                @elseif ($checkRequestStatus = 1)
-                                    <div class="row border-top pt-3">
-                                        <div class="col-12">
-                                            <a href="https://api.whatsapp.com/send?phone={{ $donation->user->profile->phone }}&text=Hai%20saya%20dari%20{{ $loginUser->profile->company }}%20ingin%20konfirmasi%20permintaan%20donasi" class="btn btn-success">
-                                                <i class="social-icon-item bi-whatsapp"></i>
-                                                Permintaan disetujui, silahkan konfirmasi
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
+                                    @endif
+                                @endrole
                             @endif
                         @endguest
 

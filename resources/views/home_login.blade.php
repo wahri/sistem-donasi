@@ -13,6 +13,9 @@
                             <div class="col-lg-12 col-12 text-center">
                                 <h5 class="mb-3">Login</h5>
                             </div>
+                            <div class="alert alert-danger" role="alert">
+                                Username atau Password salah
+                            </div>
 
                             {{-- <div class="col-lg-6 col-6 form-check-group form-check-group-donation-frequency">
                             <div class="form-check form-check-radio">
@@ -41,8 +44,8 @@
                         </div> --}}
 
                             <div class="col-lg-12 col-12 mt-2">
-                                <input type="text" name="email" id="email" class="form-control" placeholder="Email"
-                                    required>
+                                <input type="text" name="username" id="username" class="form-control"
+                                    placeholder="Username" required>
                             </div>
 
                             <div class="col-lg-12 col-12 mt-2">
@@ -53,8 +56,16 @@
                             <div class="col-lg-12 col-12 mt-2">
 
                                 <button type="submit" class="form-control mt-4">Login</button>
+
                             </div>
                         </div>
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <a class="btn btn-outline-success" href="{{ route('contributor_register') }}">Daftar sebagai
+                                donatur</a>
+                                <a class="btn btn-outline-success btn-block"
+                                    href="{{ route('institution_register') }}">Daftar sebagai penerima</a>
+                            </div>
                     </form>
                 </div>
 

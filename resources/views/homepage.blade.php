@@ -49,7 +49,7 @@
 
                 <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-4">
                     <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="#section_3" class="d-block">
+                        <a href="{{ route('institution_register') }}" class="d-block">
                             <img src="images/icons/food-donation.png" class="featured-block-image img-fluid" alt=""
                                 style="height: 100px">
 
@@ -100,7 +100,14 @@
                                 alt="" style="height: 150px; object-fit: cover">
 
                             <div class="custom-block">
-                                <div class="custom-block-body">
+                                <div class="px-3 pt-2">
+                                    <p class="">
+                                        <i class="bi-shop-window custom-icon me-1"></i>
+                                        {{ $donation->user->profile->company }}
+                                        {{ $donation->user->profile->address }}
+                                    </p>
+                                </div>
+                                <div class="custom-block-body pt-0">
                                     <h5 class="mb-1">{{ $donation->name }}</h5>
 
                                     <div class="d-flex align-items-center my-1">
@@ -110,9 +117,13 @@
                                         </p>
                                     </div>
                                 </div>
-
-                                <a href="{{ route('detailDonasi', $donation->id) }}" class="custom-btn btn">Dapatkan
-                                    Donasi</a>
+                                @if ($donation->stock < 1)
+                                    <a target="_blank" href="{{ route('detailDonasi', $donation->id) }}" class="custom-btn btn">Donasi telah
+                                        habis</a>
+                                @else
+                                    <a target="_blank" href="{{ route('detailDonasi', $donation->id) }}" class="custom-btn btn">Dapatkan
+                                        Donasi</a>
+                                @endif
                             </div>
                         </div>
                     </div>

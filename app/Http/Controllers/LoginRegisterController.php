@@ -28,14 +28,15 @@ class LoginRegisterController extends Controller
     {
         $this->validate(request(), [
             'name' => 'required',
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
         $user = User::factory()->create([
             'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'status' => 1
         ]);
         $user->assignRole('Contributor');
         $contributorProfile = ContributorProfile::create([
@@ -61,14 +62,21 @@ class LoginRegisterController extends Controller
     {
         $this->validate(request(), [
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
+            'username' => 'required',
+            'password' => 'required',
+            'document' => 'required',
         ]);
+
+        $document = $request->file('document');
+        $nama_file = time() . "_" . $document->getClientOriginalName();
+        $document->move('document', $nama_file);
+
 
         $user = User::factory()->create([
             'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'status' => 0
         ]);
         $user->assignRole('Institution');
         $institutionProfile = InstitutionProfile::create([
@@ -76,13 +84,14 @@ class LoginRegisterController extends Controller
             'company' => $request->company,
             'address' => $request->address,
             'phone' => $request->phone,
+            'document' => $nama_file
         ]);
         $user->profile()->associate($institutionProfile);
         $user->save();
 
-        auth()->login($user);
+        // auth()->login($user);
 
-        return redirect()->route('admin');
+        return redirect()->route('homepage');
     }
 
     public function login()
@@ -93,11 +102,11 @@ class LoginRegisterController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
             $request->session()->regenerate();
 
             // Mendapatkan role dari user yang login
@@ -114,8 +123,8 @@ class LoginRegisterController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Your provided credentials do not match in our records.',
-        ])->onlyInput('email');
+            'username' => 'Your provided credentials do not match in our records.',
+        ])->onlyInput('username');
     }
 
     public function logout(Request $request)
