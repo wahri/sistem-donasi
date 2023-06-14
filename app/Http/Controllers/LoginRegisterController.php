@@ -106,7 +106,16 @@ class LoginRegisterController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->status == 0) {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return redirect()->route('filament.auth.login')
+                    ->withErrors([
+                        'gagal' => 'Akun belum aktif!'
+                    ])->onlyInput('username');;
+            }
             $request->session()->regenerate();
 
             // Mendapatkan role dari user yang login
@@ -114,17 +123,18 @@ class LoginRegisterController extends Controller
 
             // Mengatur redirect page sesuai role
             if ($role->name == 'Admin') {
-                return redirect()->to('admin')
+                return redirect()->route('dashboardAdmin')
                     ->withSuccess('You have successfully logged in!');
             } else {
                 return redirect()->route('homepage')
                     ->withSuccess('You have successfully logged in!');
             }
+        } else {
+            return back()
+                ->withErrors([
+                    'gagal' => 'Username atau password salah!'
+                ])->onlyInput('username');
         }
-
-        return back()->withErrors([
-            'username' => 'Your provided credentials do not match in our records.',
-        ])->onlyInput('username');
     }
 
     public function logout(Request $request)

@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../../Template Web/KindHeart-1.0.0"
+		},
+		{
+			"path": "../../Template Web/AdminLTE-3.2.0"
 		}
 	],
 	"settings": {}

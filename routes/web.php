@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FrontPageController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UserController;
 use App\Models\Donation;
 use App\Models\RequestDonation;
 use Illuminate\Support\Facades\Route;
@@ -30,21 +32,26 @@ Route::post('/requestDonation', [DonationController::class, 'requestDonation'])-
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('pengaturan-akun', [FrontPageController::class, 'settingAccount'])->name('settingAccount');
-    
-    Route::post('updateProfile', [FrontPageController::class, 'updateProfile'])->name('updateProfile');
-    Route::post('changePassword', [FrontPageController::class, 'changePassword'])->name('changePassword');
-  });
+  Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboardAdmin');
+
+  Route::resource('user', UserController::class);
+  Route::put('user/confirmation/{id}', [UserController::class, 'accountConfirmation'])->name('accountConfirmation');
+
+  Route::get('pengaturan-akun', [FrontPageController::class, 'settingAccount'])->name('settingAccount');
+
+  Route::post('updateProfile', [FrontPageController::class, 'updateProfile'])->name('updateProfile');
+  Route::post('changePassword', [FrontPageController::class, 'changePassword'])->name('changePassword');
+});
 
 
 Route::controller(LoginRegisterController::class)->group(function () {
-    Route::get('/login', 'login')->name('filament.auth.login');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::post('/auth/logout', 'logout')->name('filament.auth.logout');
+  Route::get('/login', 'login')->name('filament.auth.login');
+  Route::post('/authenticate', 'authenticate')->name('authenticate');
+  Route::post('/auth/logout', 'logout')->name('filament.auth.logout');
 
-    Route::get('/institution-register', 'createInstitution')->name('institution_register');
-    Route::post('/institution-register', 'storeInstitution')->name('institution_register_process');
+  Route::get('/institution-register', 'createInstitution')->name('institution_register');
+  Route::post('/institution-register', 'storeInstitution')->name('institution_register_process');
 
-    Route::get('/contributor-register', 'createContributor')->name('contributor_register');
-    Route::post('/contributor-register', 'storeContributor')->name('contributor_register_process');
+  Route::get('/contributor-register', 'createContributor')->name('contributor_register');
+  Route::post('/contributor-register', 'storeContributor')->name('contributor_register_process');
 });

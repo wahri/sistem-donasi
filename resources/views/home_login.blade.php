@@ -13,9 +13,11 @@
                             <div class="col-lg-12 col-12 text-center">
                                 <h5 class="mb-3">Login</h5>
                             </div>
-                            <div class="alert alert-danger" role="alert">
-                                Username atau Password salah
-                            </div>
+                            @error('gagal')
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
 
                             {{-- <div class="col-lg-6 col-6 form-check-group form-check-group-donation-frequency">
                             <div class="form-check form-check-radio">
@@ -45,7 +47,7 @@
 
                             <div class="col-lg-12 col-12 mt-2">
                                 <input type="text" name="username" id="username" class="form-control"
-                                    placeholder="Username" required>
+                                    placeholder="Username" value="{{ old('username') }}" required>
                             </div>
 
                             <div class="col-lg-12 col-12 mt-2">
@@ -63,9 +65,9 @@
                         <div class="d-grid gap-2">
                             <a class="btn btn-outline-success" href="{{ route('contributor_register') }}">Daftar sebagai
                                 donatur</a>
-                                <a class="btn btn-outline-success btn-block"
-                                    href="{{ route('institution_register') }}">Daftar sebagai penerima</a>
-                            </div>
+                            <a class="btn btn-outline-success btn-block" href="{{ route('institution_register') }}">Daftar
+                                sebagai penerima</a>
+                        </div>
                     </form>
                 </div>
 

@@ -9,6 +9,5 @@ use Spatie\Permission\Traits\HasRoles;
 class InstitutionProfile extends Model
 {
     use HasFactory, HasRoles;
-    protected $fillable = ['company', 'phone', 'address', 'document'];
+    protected $fillable = ['user_id', 'company', 'phone', 'address', 'document'];
 }
-
