@@ -17,19 +17,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'homepage' ? 'active' : '' }}" href="{{ route('homepage') }}">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('donasiPage') }}">Donasi</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'donasiPage' ? 'active' : '' }}" href="{{ route('donasiPage') }}">Donasi</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#section_4">Relawan</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'volunteerPage' ? 'active' : '' }}" href="{{ route('volunteerPage') }}">Relawan</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#section_6">Kontak</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'contactPage' ? 'active' : '' }}" href="{{ route('contactPage') }}">Kontak</a>
                 </li>
 
                 @guest

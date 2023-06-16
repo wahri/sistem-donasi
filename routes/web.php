@@ -26,6 +26,9 @@ Route::get('/', [FrontPageController::class, 'index'])->name('homepage');
 Route::get('/donasi/{id}', [FrontPageController::class, 'detailDonasi'])->name('detailDonasi');
 Route::get('/donasi', [FrontPageController::class, 'donasiPage'])->name('donasiPage');
 
+Route::get('/relawan', [FrontPageController::class, 'volunteerPage'])->name('volunteerPage');
+Route::get('/kontak', [FrontPageController::class, 'contactPage'])->name('contactPage');
+
 Route::get('/readNotification/{notification}', [FrontPageController::class, 'readNotification'])->name('readNotification');
 Route::post('/requestConfirmation/{request}', [DonationController::class, 'requestConfirmation'])->name('requestConfirmation');
 Route::post('/requestDonation', [DonationController::class, 'requestDonation'])->name('requestDonation');

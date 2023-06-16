@@ -30,12 +30,24 @@ https://templatemo.com/tm-581-kind-heart-charity
 </head>
 
 <body id="section_1">
-
     @include('partials.header')
 
     @include('partials.navbar')
 
 
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
 
     <main>
 
@@ -49,7 +61,7 @@ https://templatemo.com/tm-581-kind-heart-charity
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
-    <script src="js/click-scroll.js"></script>
+    {{-- <script src="js/click-scroll.js"></script> --}}
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
     <script>

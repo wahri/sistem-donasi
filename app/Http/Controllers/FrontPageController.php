@@ -99,4 +99,18 @@ class FrontPageController extends Controller
     {
         
     }
+
+    function volunteerPage() {
+        
+        $donations =  Donation::get();
+
+        return view('volunteer', compact('donations'));
+    }
+
+    function contactPage() {
+        
+        $donations =  Donation::get();
+
+        return view('contact', compact('donations'));
+    }
 }
