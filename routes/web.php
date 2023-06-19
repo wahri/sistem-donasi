@@ -34,17 +34,19 @@ Route::post('/requestConfirmation/{request}', [DonationController::class, 'reque
 Route::post('/requestDonation', [DonationController::class, 'requestDonation'])->name('requestDonation');
 
 
-Route::middleware(['auth'])->group(function () {
-  Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboardAdmin');
+Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
+  Route::get('dashboard', [AdminController::class, 'dashboard'])->name('index');
 
-  Route::resource('user', UserController::class);
-  Route::put('user/confirmation/{id}', [UserController::class, 'accountConfirmation'])->name('accountConfirmation');
+  Route::get('/transaction', [AdminController::class, 'transactionPage'])->name('transaction');
 
-  Route::get('pengaturan-akun', [FrontPageController::class, 'settingAccount'])->name('settingAccount');
-
-  Route::post('updateProfile', [FrontPageController::class, 'updateProfile'])->name('updateProfile');
-  Route::post('changePassword', [FrontPageController::class, 'changePassword'])->name('changePassword');
+  Route::resource('/user', UserController::class);
+  Route::put('/user/confirmation/{id}', [UserController::class, 'accountConfirmation'])->name('accountConfirmation');
 });
+
+Route::get('/pengaturan-akun', [FrontPageController::class, 'settingAccount'])->name('settingAccount');
+
+Route::post('/updateProfile', [FrontPageController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/changePassword', [FrontPageController::class, 'changePassword'])->name('changePassword');
 
 
 Route::controller(LoginRegisterController::class)->group(function () {

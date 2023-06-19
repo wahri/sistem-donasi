@@ -25,7 +25,7 @@
        with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="{{ route('dashboardAdmin') }}" class="nav-link {{ Route::currentRouteName() === 'dashboardAdmin' ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.index') }}" class="nav-link {{ Route::currentRouteName() === 'dashboard.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -33,7 +33,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('user.index') }}" class="nav-link {{ Route::currentRouteName() === 'user.index' ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.transaction') }}" class="nav-link {{ Route::currentRouteName() === 'dashboard.transaction' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-print"></i>
+                        <p>
+                            Manajemen Transaksi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.user.index') }}" class="nav-link {{ Route::currentRouteName() === 'dashboard.user.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Manajemen User

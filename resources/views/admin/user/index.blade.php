@@ -47,7 +47,7 @@
                                                     {{ $user->profile->company }}
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('user.show', $user->id) }}"
+                                                    <a href="{{ route('dashboard.user.show', $user->id) }}"
                                                         class="btn btn-sm btn-primary">
                                                         Lihat detail
                                                     </a>
@@ -99,7 +99,7 @@
                                                     @endforeach
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('user.show', $user->id) }}"
+                                                    <a href="{{ route('dashboard.user.show', $user->id) }}"
                                                         class="btn btn-sm btn-primary">
                                                         Lihat detail
                                                     </a>

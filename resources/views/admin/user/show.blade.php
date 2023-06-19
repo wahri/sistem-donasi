@@ -94,7 +94,7 @@
                                 @if ($user->status == 0)
                                     <div class="row mt-3">
                                         <div class="col-12 d-flex">
-                                            <a href="{{ route('user.index') }}" class="btn btn-secondary">
+                                            <a href="{{ route('dashboard.user.index') }}" class="btn btn-secondary">
                                                 Batal
                                             </a>
                                             <form action="{{ route('accountConfirmation', $user->id) }}" method="POST">

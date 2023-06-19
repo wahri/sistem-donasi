@@ -123,7 +123,7 @@ class LoginRegisterController extends Controller
 
             // Mengatur redirect page sesuai role
             if ($role->name == 'Admin') {
-                return redirect()->route('dashboardAdmin')
+                return redirect()->route('dashboard.index')
                     ->withSuccess('You have successfully logged in!');
             } else {
                 return redirect()->route('homepage')
