@@ -66,4 +66,5 @@ class DonationController extends Controller
 
         return redirect()->route('detailDonasi', $request->donation_id);
     }
+
 }

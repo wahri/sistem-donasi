@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class CreateDonation extends CreateRecord
 {
     protected static string $resource = DonationResource::class;
-
+    protected static bool $canCreateAnother = false;
 
     public function mount(): void
     {

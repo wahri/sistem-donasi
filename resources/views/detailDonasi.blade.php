@@ -62,9 +62,9 @@
                                 </div>
                             </div>
                         @else
-                            @if ($donation->stock > 0)
-                                @role('Institution')
-                                    @if (!$checkRequest)
+                            @role('Institution')
+                                @if (!$checkRequest)
+                                    @if ($donation->stock > 0)
                                         <form action="{{ route('requestDonation') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="donation_id" value="{{ $donation->id }}">
@@ -103,27 +103,28 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    @elseif ($getRequest->status == 0)
-                                        <div class="row border-top pt-3">
-                                            <div class="col-12">
-                                                <button class="btn btn-sm custom-btn" disabled>
-                                                    Menunggu persetujuan
-                                                </button>
-                                            </div>
-                                        </div>
-                                    @elseif ($getRequest->status == 1)
-                                        <div class="row border-top pt-3">
-                                            <div class="col-12">
-                                                <a href="https://api.whatsapp.com/send?phone={{ $donation->user->profile->phone }}&text=Hai%20saya%20dari%20{{ $loginUser->profile->company }}%20ingin%20konfirmasi%20permintaan%20donasi"
-                                                    class="btn btn-success">
-                                                    <i class="social-icon-item bi-whatsapp"></i>
-                                                    Permintaan disetujui, silahkan konfirmasi
-                                                </a>
-                                            </div>
-                                        </div>
                                     @endif
-                                @endrole
-                            @endif
+                                @elseif ($getRequest->status == 0)
+                                    <div class="row border-top pt-3">
+                                        <div class="col-12">
+                                            <button class="btn btn-sm custom-btn" disabled>
+                                                Menunggu persetujuan
+                                            </button>
+                                        </div>
+                                    </div>
+                                @elseif ($getRequest->status == 1)
+                                    <div class="row border-top pt-3">
+                                        <div class="col-12">
+                                            <a href="https://api.whatsapp.com/send?phone={{ $donation->user->profile->phone }}&text=Hai%20saya%20dari%20{{ $loginUser->profile->company }}%20ingin%20konfirmasi%20permintaan%20donasi"
+                                                class="btn btn-success">
+                                                <i class="social-icon-item bi-whatsapp"></i>
+                                                Permintaan disetujui, silahkan konfirmasi
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endrole
+
                         @endguest
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Notification;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,10 +25,12 @@ class NotificationsMiddleware
                 ->where('isNew', 1)
                 ->exists();
             // $checknotifications = $user->notifications()->where('isNew', 1)->get();
+            $newUserNotif = User::where('status', 0)->count();
             view()->share([
                 'notifications' => $notifications,
                 'isNewNotifications' => $isNewNotifications,    
                 'loginUser' => $user,
+                'newUserNotif' => $newUserNotif,
             ]);
         }
 

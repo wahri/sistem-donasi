@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Manajemen User</h1>
+                        <h1>Data Donasi</h1>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Konfirmasi pendaftaran institusi baru <span class="badge bg-danger">New</span></h3>
+                                <h3 class="card-title">List donasi yang telah dihapus</h3>
                             </div>
                             <div class="card-body">
                                 @if (session('success'))
@@ -27,77 +27,37 @@
                                         {{ session('success') }}
                                     </div>
                                 @endif
-                                <table id="dataNewUser" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th width="5%" class="text-center">No</th>
-                                            <th>Nama CP</th>
-                                            <th>Nama Institusi</th>
-                                            <th width="15%" class="text-center">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($newInstutionAccount as $i => $user)
-                                            <tr>
-                                                <td class="text-center">{{ $i + 1 }}</td>
-                                                <td>
-                                                    {{ $user->name }}
-                                                </td>
-                                                <td>
-                                                    {{ $user->profile->company }}
-                                                </td>
-                                                <td class="text-center">
-                                                    <a href="{{ route('dashboard.user.show', $user->id) }}"
-                                                        class="btn btn-sm btn-primary">
-                                                        Lihat detail
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Manajemen Akun User</h3>
-                            </div>
-                            <div class="card-body">
                                 <table id="dataUser" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th width="5%" class="text-center">No</th>
-                                            <th>Nama CP</th>
-                                            <th>Nama Institusi</th>
-                                            <th>Role</th>
-                                            <th width="15%" class="text-center">Aksi</th>
+                                            <th width="230px">Gambar</th>
+                                            <th>Nama</th>
+                                            <th>Deskripsi</th>
+                                            <th width="25%" class="text-center">Aksi</th>
+                                            {{-- <th width="15%" class="text-center">Aksi</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($allAccount as $i => $user)
+                                        @foreach ($listDonation as $i => $donation)
                                             <tr>
-                                                <td class="text-center">{{ $i + 1 }}</td>
-                                                <td>
-                                                    {{ $user->name }}
+                                                <td class="text-center">
+                                                    {{ $i + 1 }}
                                                 </td>
                                                 <td>
-                                                    {{ $user->profile->company }}
+                                                    <img class="img-thumbnail"
+                                                        src="{{ asset('storage/' . $donation->image) }}"
+                                                        alt="{{ $donation->name }}" style="width: 200px">
                                                 </td>
                                                 <td>
-                                                    @foreach ($user->roles as $role)
-                                                        {{ $role->name }}
-                                                    @endforeach
+                                                    {{ $donation->name }}
+                                                </td>
+                                                <td>
+                                                    {!! $donation->description !!}
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('dashboard.user.show', $user->id) }}"
-                                                        class="btn btn-sm btn-primary">
-                                                        Lihat detail
-                                                    </a>
+                                                    <a href="{{ route('dashboard.donationRestore', $donation->id) }}" class="btn btn-success btn-sm mb-3">Restore</a>
+                                                    <a href="{{ route('dashboard.donationDeletePermanent', $donation->id) }}" class="btn btn-danger btn-sm mb-3">Hapus Permanen</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -139,15 +99,6 @@
     <!-- Page specific script -->
     <script>
         $(function() {
-            $('#dataNewUser').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
             $('#dataUser').DataTable({
                 "paging": true,
                 "lengthChange": false,

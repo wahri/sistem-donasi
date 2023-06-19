@@ -35,9 +35,15 @@ Route::post('/requestDonation', [DonationController::class, 'requestDonation'])-
 
 
 Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
-  Route::get('dashboard', [AdminController::class, 'dashboard'])->name('index');
+  Route::get('/', [AdminController::class, 'dashboard'])->name('index');
 
   Route::get('/transaction', [AdminController::class, 'transactionPage'])->name('transaction');
+
+  Route::get('/donation', [AdminController::class, 'donationPage'])->name('donation');
+  Route::delete('/donation/{id}', [AdminController::class, 'deleteDonation'])->name('deleteDonation');
+  Route::get('/donation/trash', [AdminController::class, 'donationTrashPage'])->name('donationTrash');
+  Route::get('/donation/restore/{id}', [AdminController::class, 'donationRestore'])->name('donationRestore');
+  Route::get('/donation/delete/{id}', [AdminController::class, 'donationDeletePermanent'])->name('donationDeletePermanent');
 
   Route::resource('/user', UserController::class);
   Route::put('/user/confirmation/{id}', [UserController::class, 'accountConfirmation'])->name('accountConfirmation');

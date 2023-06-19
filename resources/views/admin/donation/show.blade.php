@@ -91,30 +91,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt-3">
-                                    <div class="col-12 d-flex">
-                                        <a href="{{ route('dashboard.user.index') }}" class="btn btn-secondary mr-3">
-                                            Kembali
-                                        </a>
-                                        @if ($user->status == 0)
-                                            <form action="{{ route('dashboard.accountConfirmation', $user->id) }}"
-                                                method="POST">
+                                @if ($user->status == 0)
+                                    <div class="row mt-3">
+                                        <div class="col-12 d-flex">
+                                            <a href="{{ route('user.index') }}" class="btn btn-secondary">
+                                                Batal
+                                            </a>
+                                            <form action="{{ route('accountConfirmation', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-success mr-3">
+                                                <button type="submit" class="btn btn-success ml-3">
                                                     Konfirmasi Akun
                                                 </button>
                                             </form>
-                                        @endif
-                                        <form action="{{ route('dashboard.user.destroy', $user->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">
-                                                Delete Akun
-                                            </button>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>

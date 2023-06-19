@@ -73,7 +73,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('dashboard.user.index')->withSuccess('User berhasil dihapus!');
     }
 
     function accountConfirmation(string $id)
@@ -82,6 +84,6 @@ class UserController extends Controller
 
         $user->status = 1;
         $user->save();
-        return redirect()->route('user.index')->withSuccess('Status user berhasil dikonfirmasi!');
+        return redirect()->route('dashboard.user.index')->withSuccess('Status user berhasil dikonfirmasi!');
     }
 }
