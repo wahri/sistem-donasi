@@ -6,6 +6,8 @@ use App\Models\Donation;
 use App\Models\RequestDonation;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
@@ -43,12 +45,14 @@ class AdminController extends Controller
         return view('admin/transaction/index', compact('dataTransaction'));
     }
 
-    function donationPage() {
+    function donationPage()
+    {
         $listDonation = Donation::all();
         return view('admin/donation/index', compact('listDonation'));
     }
 
-    function deleteDonation($id) {
+    function deleteDonation($id)
+    {
         //get post by ID
         $donation = Donation::findOrFail($id);
 
@@ -59,20 +63,29 @@ class AdminController extends Controller
         return redirect()->route('dashboard.donation')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 
-    function donationTrashPage() {
+    function donationTrashPage()
+    {
         $listDonation = Donation::onlyTrashed()->get();
         return view('admin/donation/trashed', compact('listDonation'));
     }
 
-    function donationRestore($id) {
-        $donation = Donation::onlyTrashed()->where('id',$id);
+    function donationRestore($id)
+    {
+        $donation = Donation::onlyTrashed()->where('id', $id);
         $donation->restore();
         return redirect()->route('dashboard.donation')->with(['success' => 'Data Berhasil Dikembalikan!']);
     }
 
-    function donationDeletePermanent($id) {
-        $donation = Donation::onlyTrashed()->where('id',$id);
+    function donationDeletePermanent($id)
+    {
+        $donation = Donation::onlyTrashed()->where('id', $id);
         $donation->forceDelete();
         return redirect()->route('dashboard.donationTrash')->with(['success' => 'Data Berhasil Dihapus Permanent!']);
+    }
+
+    function settingPage()
+    {
+        $user = Auth::user();
+        return view('admin/setting', compact('user'));
     }
 }

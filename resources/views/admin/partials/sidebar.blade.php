@@ -66,6 +66,15 @@
                         @endif
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.setting') }}"
+                        class="nav-link {{ Route::currentRouteName() === 'dashboard.setting' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>
+                            Pengaturan Akun
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

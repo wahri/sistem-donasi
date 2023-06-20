@@ -39,6 +39,8 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(functi
 
   Route::get('/transaction', [AdminController::class, 'transactionPage'])->name('transaction');
 
+  Route::get('/setting', [AdminController::class, 'settingPage'])->name('setting');
+
   Route::get('/donation', [AdminController::class, 'donationPage'])->name('donation');
   Route::delete('/donation/{id}', [AdminController::class, 'deleteDonation'])->name('deleteDonation');
   Route::get('/donation/trash', [AdminController::class, 'donationTrashPage'])->name('donationTrash');
