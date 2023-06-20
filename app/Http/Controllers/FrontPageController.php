@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class FrontPageController extends Controller
 {
@@ -46,11 +47,17 @@ class FrontPageController extends Controller
             ->where('user_id', $user_id)
             ->exists();
 
+        $phoneNumber = str_replace(' ', '', $donation->user->profile->phone);
+        if (substr($phoneNumber, 0, 3) !== '+62') {
+            // Jika bukan format yang diinginkan, ubah format menjadi +62
+            $phoneNumber = '+62' . substr($phoneNumber, 1);
+        }
+
         $requestDonations = RequestDonation::where('donation_id', $id)->get();
 
         // dd($requestDonations);
 
-        return view('detailDonasi', compact(['donation', 'checkRequest', 'checkOwner', 'requestDonations', 'getRequest']));
+        return view('detailDonasi', compact(['donation', 'checkRequest', 'checkOwner', 'requestDonations', 'getRequest', 'phoneNumber']));
     }
 
     public function donasiPage()
@@ -97,7 +104,23 @@ class FrontPageController extends Controller
 
     public function changePassword(Request $request)
     {
-        
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+        // Verifikasi password lama
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'Password lama tidak sesuai']);
+        }else{
+            // Update password baru
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+    
+            return redirect()->back()->with('success', 'Password berhasil diubah');
+        }     
     }
 
     function volunteerPage() {

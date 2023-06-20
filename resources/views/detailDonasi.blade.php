@@ -115,7 +115,7 @@
                                 @elseif ($getRequest->status == 1)
                                     <div class="row border-top pt-3">
                                         <div class="col-12">
-                                            <a href="https://api.whatsapp.com/send?phone={{ $donation->user->profile->phone }}&text=Hai%20saya%20dari%20{{ $loginUser->profile->company }}%20ingin%20konfirmasi%20permintaan%20donasi"
+                                            <a href="https://api.whatsapp.com/send?phone={{ $phoneNumber }}&text=Hai%20saya%20dari%20{{ $loginUser->profile->company }}%20ingin%20konfirmasi%20permintaan%20donasi"
                                                 class="btn btn-success">
                                                 <i class="social-icon-item bi-whatsapp"></i>
                                                 Permintaan disetujui, silahkan konfirmasi
