@@ -31,6 +31,7 @@ Route::get('/kontak', [FrontPageController::class, 'contactPage'])->name('contac
 
 Route::get('/readNotification/{notification}', [FrontPageController::class, 'readNotification'])->name('readNotification');
 Route::post('/requestConfirmation/{request}', [DonationController::class, 'requestConfirmation'])->name('requestConfirmation');
+Route::post('/requestDecline/{request}', [DonationController::class, 'requestDecline'])->name('requestDecline');
 Route::post('/requestDonation', [DonationController::class, 'requestDonation'])->name('requestDonation');
 
 
@@ -61,6 +62,8 @@ Route::controller(LoginRegisterController::class)->group(function () {
   Route::get('/login', 'login')->name('filament.auth.login');
   Route::post('/authenticate', 'authenticate')->name('authenticate');
   Route::post('/auth/logout', 'logout')->name('filament.auth.logout');
+
+  Route::get('/register', 'registerPage')->name('register');
 
   Route::get('/institution-register', 'createInstitution')->name('institution_register');
   Route::post('/institution-register', 'storeInstitution')->name('institution_register_process');

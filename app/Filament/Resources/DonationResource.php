@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DonationResource\Pages;
 use App\Filament\Resources\DonationResource\RelationManagers;
+use App\Filament\Widgets\DonationHistories;
 use App\Models\Donation;
 use Closure;
 use Filament\Forms;
@@ -31,7 +32,7 @@ class DonationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationLabel = 'Berikan Donasi';
+    protected static ?string $navigationLabel = 'Donasi';
 
     public static function form(Form $form): Form
     {
@@ -40,8 +41,6 @@ class DonationResource extends Resource
                 Card::make()
                     ->schema([
                         Hidden::make('user_id')
-                            ->required(),
-                        Hidden::make('slug')
                             ->required(),
                         Forms\Components\TextInput::make('name')
                             ->reactive()
@@ -80,13 +79,11 @@ class DonationResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('stock'),
-                Tables\Columns\TextColumn::make('status'),
                 ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('expired_donation')
-                    ->dateTime(),
+                    ->dateTime('d M Y'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -123,10 +120,15 @@ class DonationResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
+        $currentDateTime = date('Y-m-d H:i:s');
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ])
-            ->whereBelongsTo(auth()->user());;
+            ->whereBelongsTo(auth()->user())
+            ->where('stock', '>', 0)
+            ->where('expired_donation', '>', $currentDateTime);
     }
+
+    
 }

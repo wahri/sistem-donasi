@@ -31,8 +31,10 @@ class AdminController extends Controller
         $dataTransaction = $users->map(function ($user) {
             $jumlahDonasi = Donation::where('user_id', $user->id)
                 ->count();
-            $jumlahTransaksi = RequestDonation::where('user_id', $user->id)
-                ->where('status', 1)
+            $jumlahTransaksi = Donation::where('donations.user_id', $user->id)
+                ->join('request_donations', 'donations.id', '=', 'request_donations.donation_id')
+                ->where('request_donations.status', 1)
+                ->groupBy('request_donations.donation_id')
                 ->count();
 
             return [

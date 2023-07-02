@@ -24,6 +24,15 @@
                                 <textarea class="form-control" name="address" id="address" rows="2"
                                     placeholder="Alamat Perusahaan/Restoran/Warung" required></textarea>
                             </div>
+                            <div class="col-lg-12 col-12 mt-3">
+                                <div class="input-group">
+                                    <input type="text" name="map" class="form-control" placeholder="Link Lokasi Google Map">
+                                    <a class="btn btn-outline-success" href="https://www.google.com/maps"
+                                        target="_blank">
+                                        <i class="bi bi-geo-alt"></i> Google Maps
+                                    </a>
+                                </div>
+                            </div>
 
                             <div class="col-lg-6 col-12 mt-3">
                                 <input type="text" name="name" id="name" class="form-control"
@@ -36,7 +45,7 @@
                             </div>
 
                             <div class="col-lg-6 col-12 mt-3">
-                                <input type="username" name="username" id="username" pattern="[^ @]*@[^ @]*"
+                                <input type="username" name="username" id="username"
                                     class="form-control" placeholder="Username untuk login akun" required>
                             </div>
 

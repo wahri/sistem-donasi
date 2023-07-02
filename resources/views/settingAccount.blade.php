@@ -31,6 +31,19 @@
                                         <label for="address" class="form-label">Alamat Institusi</label>
                                         <textarea class="form-control" name="address" id="address" rows="2" placeholder="Alamat Institusi">{{ old('address', $user->profile->address) }}</textarea>
                                     </div>
+                                    @role('Contributor')
+                                        <div class="col-lg-12 col-12 mt-3">
+                                            <div class="input-group">
+                                                <input type="text" name="map"
+                                                    value="{{ old('phone', $user->profile->map) }}" class="form-control"
+                                                    placeholder="Link Lokasi Google Map">
+                                                <a class="btn btn-outline-success" href="https://www.google.com/maps"
+                                                    target="_blank">
+                                                    <i class="bi bi-geo-alt"></i> Google Maps
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endrole
 
                                     <div class="col-lg-6 col-12 mt-3">
                                         <label for="name" class="form-label">Nama CP/Narahubung</label>
@@ -45,6 +58,7 @@
                                             value="{{ old('phone', $user->profile->phone) }}" class="form-control"
                                             placeholder="Nomor HP / Whatsapp">
                                     </div>
+
 
                                     <div class="col-lg-12 col-12 mt-2">
                                         <button type="submit" class="btn btn-info mt-4">Update Profile</button>
