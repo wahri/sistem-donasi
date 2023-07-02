@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg bg-light shadow-lg">
     <div class="container">
         <a class="navbar-brand" href="{{ route('homepage') }}">
-            <img src="{{ asset('images/logo.png') }}" class="logo img-fluid">
+            <img src="{{ asset('images/logoo.png') }}" class="logo img-fluid">
             <span>
-                {{-- Kind Heart Charity
-                <small>Non-profit Organization</small> --}}
                 Berbagi Makan
+                <small>Non-profit Organization</small>
+                
             </span>
         </a>
 

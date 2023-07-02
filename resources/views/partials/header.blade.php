@@ -5,14 +5,14 @@
             <div class="col-lg-8 col-12 d-flex flex-wrap">
                 <p class="d-flex me-4 mb-0">
                     <i class="bi-geo-alt me-2"></i>
-                    Jakarta, Indonesia
+                    Jogjakarta, Indonesia
                 </p>
 
                 <p class="d-flex mb-0">
                     <i class="bi-envelope me-2"></i>
 
-                    <a href="mailto:info@donasi.com">
-                        info@donasi.com
+                    <a href="mailto:info@berbagimakan.com">
+                        info@berbagimakan.com
                     </a>
                 </p>
             </div>

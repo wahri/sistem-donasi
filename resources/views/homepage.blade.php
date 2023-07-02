@@ -9,14 +9,14 @@
                     <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="images/slide/volunteer-helping-with-donation-box.jpg"
+                                <img src="images/slide/bannerutama.png"
                                     class="carousel-image img-fluid" alt="...">
 
-                                <div class="carousel-caption d-flex flex-column justify-content-end">
+                                <!-- <div class="carousel-caption d-flex flex-column justify-content-end">
                                     <h1>be a Kind Heart</h1>
 
                                     <p>Professional charity theme based on Bootstrap 5.2.2</p>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -44,7 +44,8 @@
             <div class="row">
 
                 <div class="col-lg-10 col-12 text-center mx-auto">
-                    <h2 class="mb-5">Selamat Datang</h2>
+                    <h2 class="mb-5">Perubahan nyata, dalam aksi nyata</h2>
+                    
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-4">
@@ -145,20 +146,20 @@
             <div class="row">
 
                 <div class="col-lg-6 col-12">
-                    <h2 class="text-white mb-4">Volunteer</h2>
+                    <h2 class="text-white mb-4">Relawan</h2>
 
                     <form class="custom-form volunteer-form mb-5 mb-lg-0" action="#" method="post" role="form">
-                        <h3 class="mb-4">Become a volunteer today</h3>
+                        <h3 class="mb-4">Ayo..Bergabung Sekarang!</h3>
 
                         <div class="row">
                             <div class="col-lg-6 col-12">
                                 <input type="text" name="volunteer-name" id="volunteer-name" class="form-control"
-                                    placeholder="Jack Doe" required>
+                                    placeholder="Nama Lengkap" required>
                             </div>
 
                             <div class="col-lg-6 col-12">
                                 <input type="email" name="volunteer-email" id="volunteer-email" pattern="[^ @]*@[^ @]*"
-                                    class="form-control" placeholder="Jackdoe@gmail.com" required>
+                                    class="form-control" placeholder="Email" required>
                             </div>
 
                             <div class="col-lg-6 col-12">
@@ -170,7 +171,7 @@
                                 <div class="input-group input-group-file">
                                     <input type="file" class="form-control" id="inputGroupFile02">
 
-                                    <label class="input-group-text" for="inputGroupFile02">Upload your CV</label>
+                                    <label class="input-group-text" for="inputGroupFile02">Upload CV mu</label>
 
                                     <i class="bi-cloud-arrow-up ms-auto"></i>
                                 </div>
@@ -178,7 +179,7 @@
                         </div>
 
                         <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message"
-                            placeholder="Comment (Optional)"></textarea>
+                            placeholder="Komentar (Opsional)"></textarea>
 
                         <button type="submit" class="form-control">Submit</button>
                     </form>
@@ -189,10 +190,9 @@
                         class="volunteer-image img-fluid" alt="">
 
                     <div class="custom-block-body text-center">
-                        <h4 class="text-white mt-lg-3 mb-lg-3">About Volunteering</h4>
+                        <h4 class="text-white mt-lg-3 mb-lg-3">Tentang Relawan</h4>
 
-                        <p class="text-white">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm
-                            tokito Professional charity theme based</p>
+                        <p class="text-white"> Bekerja sama dalam sebuah misi untuk kebaikan manusia dan planet ini menuju masyarakat bebas kelaparan</p>
                     </div>
                 </div>
 
@@ -204,7 +204,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-12 text-center mb-4">
-                    <h2>Sponsor</h2>
+                    <h2>Didukung oleh</h2>
                 </div>
 
                 <div id="sponsor-carousel" class="carousel slide" data-ride="carousel">
@@ -217,11 +217,11 @@
                                         alt="Sponsor 1">
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor2.png') }}"
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor4.png') }}"
                                         alt="Sponsor 2">
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor3.png') }}"
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor5.png') }}"
                                         alt="Sponsor 3">
                                 </div>
                                 <div class="col-md-2 text-center">
@@ -229,11 +229,11 @@
                                         alt="Sponsor 1">
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor2.png') }}"
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor4.png') }}"
                                         alt="Sponsor 2">
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor3.png') }}"
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor5.png') }}"
                                         alt="Sponsor 3">
                                 </div>
                             </div>
@@ -245,11 +245,11 @@
                                         alt="Sponsor 1">
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor2.png') }}"
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor4.png') }}"
                                         alt="Sponsor 2">
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor3.png') }}"
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor5.png') }}"
                                         alt="Sponsor 3">
                                 </div>
                                 <div class="col-md-2 text-center">
@@ -257,11 +257,11 @@
                                         alt="Sponsor 1">
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor2.png') }}"
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor4.png') }}"
                                         alt="Sponsor 2">
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor3.png') }}"
+                                    <img class="sponsor-image" src="{{ asset('images/sponsor/sponsor5.png') }}"
                                         alt="Sponsor 3">
                                 </div>
                             </div>
