@@ -15,7 +15,10 @@ class FrontPageController extends Controller
 {
     public function index()
     {
-        $donations =  Donation::get();
+        $currentDateTime = date('Y-m-d H:i:s');
+        $donations =  Donation::where('stock', '>', 0)
+            ->where('expired_donation', '>', $currentDateTime)
+            ->get();
 
         $user = Auth::user();
 
@@ -62,7 +65,10 @@ class FrontPageController extends Controller
 
     public function donasiPage()
     {
-        $donations =  Donation::get();
+        $currentDateTime = date('Y-m-d H:i:s');
+        $donations =  Donation::where('stock', '>', 0)
+            ->where('expired_donation', '>', $currentDateTime)
+            ->get();
 
         return view('donasiPage', compact('donations'));
     }
@@ -96,6 +102,9 @@ class FrontPageController extends Controller
         $profile->company = $request->company;
         $profile->address = $request->address;
         $profile->phone = $request->phone;
+        if (isset($request->map)) {
+            $profile->map = $request->map;
+        }
 
         $profile->save();
 
@@ -114,24 +123,26 @@ class FrontPageController extends Controller
         // Verifikasi password lama
         if (!Hash::check($request->current_password, $user->password)) {
             return redirect()->back()->withErrors(['current_password' => 'Password lama tidak sesuai']);
-        }else{
+        } else {
             // Update password baru
             $user->password = Hash::make($request->new_password);
             $user->save();
-    
+
             return redirect()->back()->with('success', 'Password berhasil diubah');
-        }     
+        }
     }
 
-    function volunteerPage() {
-        
+    function volunteerPage()
+    {
+
         $donations =  Donation::get();
 
         return view('volunteer', compact('donations'));
     }
 
-    function contactPage() {
-        
+    function contactPage()
+    {
+
         $donations =  Donation::get();
 
         return view('contact', compact('donations'));

@@ -33,7 +33,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('dashboard.donation') }}"
                         class="nav-link {{ Route::currentRouteName() === 'dashboard.donation' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-box-open"></i>
@@ -41,7 +41,7 @@
                             Manajemen Donasi
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('dashboard.transaction') }}"
                         class="nav-link {{ Route::currentRouteName() === 'dashboard.transaction' ? 'active' : '' }}">

@@ -101,15 +101,12 @@
                                 alt="" style="height: 150px; object-fit: cover">
 
                             <div class="custom-block">
-                                <div class="px-3 pt-2">
+                                <div class="custom-block-body">
                                     <p class="">
                                         <i class="bi-shop-window custom-icon me-1"></i>
-                                        {{ $donation->user->profile->company }}
-                                        {{ $donation->user->profile->address }}
+                                        {{ Str::limit($donation->user->profile->company . ', ' . $donation->user->profile->address, 42, '...') }}
                                     </p>
-                                </div>
-                                <div class="custom-block-body pt-0">
-                                    <h5 class="mb-1">{{ $donation->name }}</h5>
+                                    <h5 class="mb-1">{{ Str::limit($donation->name, 37, '...') }}</h5>
 
                                     <div class="d-flex align-items-center my-1">
                                         <p class="mb-0">
@@ -119,10 +116,12 @@
                                     </div>
                                 </div>
                                 @if ($donation->stock < 1)
-                                    <a target="_blank" href="{{ route('detailDonasi', $donation->id) }}" class="custom-btn btn">Donasi telah
+                                    <a target="_blank" href="{{ route('detailDonasi', $donation->id) }}"
+                                        class="custom-btn btn">Donasi telah
                                         habis</a>
                                 @else
-                                    <a target="_blank" href="{{ route('detailDonasi', $donation->id) }}" class="custom-btn btn">Dapatkan
+                                    <a target="_blank" href="{{ route('detailDonasi', $donation->id) }}"
+                                        class="custom-btn btn">Dapatkan
                                         Donasi</a>
                                 @endif
                             </div>

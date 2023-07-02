@@ -44,6 +44,7 @@ class LoginRegisterController extends Controller
             'company' => $request->company,
             'address' => $request->address,
             'phone' => $request->phone,
+            'map' => $request->map,
         ]);
         $user->profile()->associate($contributorProfile);
         $user->save();
@@ -97,6 +98,11 @@ class LoginRegisterController extends Controller
     public function login()
     {
         return view('home_login');
+    }
+
+    public function registerPage()
+    {
+        return view('register');
     }
 
     public function authenticate(Request $request)

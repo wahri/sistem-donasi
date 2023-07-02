@@ -114,12 +114,29 @@
                                     </div>
                                 @elseif ($getRequest->status == 1)
                                     <div class="row border-top pt-3">
-                                        <div class="col-12">
+                                        <div class="col-4">
                                             <a href="https://api.whatsapp.com/send?phone={{ $phoneNumber }}&text=Hai%20saya%20dari%20{{ $loginUser->profile->company }}%20ingin%20konfirmasi%20permintaan%20donasi"
-                                                class="btn btn-success">
+                                                class="btn btn-success" target="_blank">
                                                 <i class="social-icon-item bi-whatsapp"></i>
                                                 Permintaan disetujui, silahkan konfirmasi
                                             </a>
+                                        </div>
+                                        @if (!empty($donation->user->profile->map))
+                                            <div class="col-4">
+                                                <a href="{{ $donation->user->profile->map }}" class="btn btn-secondary"
+                                                    target="_blank">
+                                                    <i class="bi bi-geo-alt"></i>
+                                                    Lokasi Donatur
+                                                </a>
+                                            </div>
+                                        @endif
+                                    </div>
+                                @elseif ($getRequest->status == 2)
+                                    <div class="row border-top pt-3">
+                                        <div class="col-12">
+                                            <button class="btn btn-danger" disabled>
+                                                Permintaan Ditolak
+                                            </button>
                                         </div>
                                     </div>
                                 @endif
@@ -147,7 +164,7 @@
                                     <th scope="col">Nama Institusi</th>
                                     <th scope="col">Jumlah Permintaan</th>
                                     <th scope="col">Komen</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -158,19 +175,31 @@
                                         <td>{{ $request->quantity }}</td>
                                         <td>{{ $request->comment }}</td>
                                         @if ($request->status == 0)
-                                            <td>
+                                            <td class="text-center">
+                                                <form method="POST" action="{{ route('requestDecline', $request->id) }}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm mb-1 btn-danger">
+                                                        Tolak Permintaan
+                                                    </button>
+                                                </form>
                                                 <form method="POST"
                                                     action="{{ route('requestConfirmation', $request->id) }}">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-success">
-                                                        Konfirmasi donasi
+                                                    <button type="submit" class="btn btn-sm mb-1 btn-success">
+                                                        Terima Permintaan
                                                     </button>
                                                 </form>
                                             </td>
-                                        @else
-                                            <td>
-                                                <button disabled="disabled" class="btn btn-secondary">
+                                        @elseif ($request->status == 1)
+                                            <td class="text-center">
+                                                <button disabled="disabled" class="btn btn-sm btn-success">
                                                     Sudah disetujui
+                                                </button>
+                                            </td>
+                                        @else
+                                            <td class="text-center">
+                                                <button disabled="disabled" class="btn btn-sm btn-danger">
+                                                    Permintaan Ditolak
                                                 </button>
                                             </td>
                                         @endif
